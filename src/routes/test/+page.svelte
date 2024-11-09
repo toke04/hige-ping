@@ -1,6 +1,6 @@
 <svelte:head>
-	<title>About</title>
-	<meta name="description" content="About this app" />
+	<title>test</title>
+	<meta name="description" content="test this app" />
 </svelte:head>
 
 <div>
