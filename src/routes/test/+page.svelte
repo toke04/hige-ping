@@ -1,22 +1,28 @@
 <script>
-	let text = 'hello';
+	import { writable } from "svelte/store";
 	let input = '';
 	let markIndex = 0;
-	let finishWord = '';
-	// const handleKey = (e: React.KeyboardEvent<HTMLDivElement>) => {
-	// 	// 入力したキーと現在入力しようとしている文字が一致するとき
-	// 	if (e.key === text[position]) {
-	// 		// 次の位置へ移動
-	// 		setPosition(position + 1);
-	// 	}
-	// };
+	let finishWord = writable('');
+	let questions = ['aaa', 'bbb', 'ccc', 'ddd'];
+	let question = questions[Math.floor(Math.random() * questions.length)];
+
+	// $: changeQuestion(finishWord);
+
+	const changeQuestion = () => {
+		question = questions[Math.floor(Math.random() * questions.length)];
+		setTimeout(() => {
+			finishWord = '';
+		}, 1000);
+	};
+
 	const handleKeydown = (e) => {
-		if (e.key === text[markIndex]) {
+		if (e.key === question[markIndex]) {
 			markIndex++;
 			input += e.key;
-			if (markIndex === text.length) {
+			if (markIndex === question.length) {
 				finishWord = '正解！';
 				markIndex = 0;
+				changeQuestion();
 			}
 		}
 	};
@@ -31,9 +37,12 @@
 	{#if finishWord}
 		<h1 class="text-red-900">{ finishWord }</h1>
 	{/if}
-	<h1>{ text }</h1>
-	<h1>{ input }</h1>
-	<h1>{ text[markIndex] }</h1>
+	<h1>
+		{#each question.split('') as q,i}
+			<span class={i === markIndex ? 'text-red-900' : '' }>{q}</span>
+		{/each}
+	</h1>
+	<h1>今まで打った内容:{ input }</h1>
 <!--	<p><button on:keydown={handleKey}>ボタンを押して</button></p>-->
 
 <!--	<p>-->
