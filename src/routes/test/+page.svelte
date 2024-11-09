@@ -3,25 +3,43 @@
 	let input = '';
 	let markIndex = 0;
 	let finishWord = writable('');
-	let questions = ['aaa', 'bbb', 'ccc', 'ddd'];
-	let question = questions[Math.floor(Math.random() * questions.length)];
-
-	// $: changeQuestion(finishWord);
+	let questions = [
+		{jp: 'たーだー', en: 'ta-da-'},
+		{jp: 'いま', en: 'ima'},
+		{jp: 'のかわりに', en: 'nokawarini'},
+		{jp: '扉の音ー', en: 'tobiranooto-', showImage: true},
+		{jp: 'を殺してー', en: 'wokoroshite-'},
+		{jp: 'くらーいー', en: 'kura-i-',showImage: true},
+		{jp: 'へーやへと', en: 'he-yaheto'},
+		{jp: '抜きあーし', en: 'nukia-shi'},
+		{jp: '差し足で-', en: 'sashiashide-',showImage: true},
+		{jp: '入り込んで', en: 'hairikonde'},
+		{jp: '眠るー', en: 'nemuru-'},
+		{jp: '日々の先にー', en: 'hibinosakini-',showImage: true},
+	];
+	let currentIndex = 0;
+	let question = questions[currentIndex];
+	let images = [
+		'https://ogre.natalie.mu/media/news/music/2024/1031/MV_SameBlue_making.jpg?imwidth=750&imdensity=1',
+		'https://ogre.natalie.mu/media/news/music/2024/1028/GTE01102037.jpg?imwidth=750&imdensity=1',
+		'https://ogre.natalie.mu/media/news/music/2023/0809/higedan_art202308.jpg?impolicy=thumb_fit&width=220&height=220',
+		'https://ogre.natalie.mu/media/news/music/2023/0309/GD_higedan_JK_mixnuts.jpg?impolicy=thumb_fit&width=220&height=220',
+		'https://ogre.natalie.mu/media/news/music/2022/0829/higedan_jkt202210cd.jpg?impolicy=thumb_fit&width=220&height=220',
+	  'https://ogre.natalie.mu/media/news/music/2020/0409/officialhigedandism_art202004.jpg?impolicy=thumb_fit&width=220&height=220'
+	]
 
 	const changeQuestion = () => {
-		question = questions[Math.floor(Math.random() * questions.length)];
-		setTimeout(() => {
-			finishWord = '';
-		}, 1000);
+		question = questions[currentIndex];
 	};
 
 	const handleKeydown = (e) => {
-		if (e.key === question[markIndex]) {
+		if (e.key === question.en[markIndex]) {
 			markIndex++;
 			input += e.key;
-			if (markIndex === question.length) {
+			if (markIndex === question.en.length) {
 				finishWord = '正解！';
 				markIndex = 0;
+				currentIndex++;
 				changeQuestion();
 			}
 		}
@@ -34,22 +52,22 @@
 </svelte:head>
 
 <div>
-	{#if finishWord}
-		<h1 class="text-red-900">{ finishWord }</h1>
-	{/if}
 	<h1>
-		{#each question.split('') as q,i}
+		{#each question.jp.split('') as q}
+			<span>{q}</span>
+		{/each}
+	</h1>
+	<h1>
+		{#each question.en.split('') as q,i}
 			<span class={i === markIndex ? 'text-red-900' : '' }>{q}</span>
 		{/each}
 	</h1>
-	<h1>今まで打った内容:{ input }</h1>
-<!--	<p><button on:keydown={handleKey}>ボタンを押して</button></p>-->
-
-<!--	<p>-->
-<!--		<button-->
-<!--			on:click={deCrementCount}-->
-<!--			class="mb-2 rounded-lg bg-purple-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"-->
-<!--			>Increment</button-->
-<!--		>-->
-<!--	</p>-->
+	{#if question.isLast}
+		<h1>お疲れ様です！</h1>
+	{/if}
+	{#if question.showImage}
+		<div style="display: flex; justify-content: center;">
+			<img src={ images[Math.floor(Math.random() * images.length)] } alt="image" style="width: 300px; height: 300px;" />
+		</div>
+	{/if}
 </div>
