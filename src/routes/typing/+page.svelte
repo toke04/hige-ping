@@ -48,11 +48,12 @@
 </script>
 <svelte:window on:keydown={handleKeydown} />
 <svelte:head>
-	<title>test</title>
-	<meta name="description" content="test this app" />
+	<title>typing</title>
+	<meta name="description" content="typing this app" />
 </svelte:head>
 
 <div>
+	<h1 class="mb-16">ひげだんの<a href="https://www.youtube.com/watch?v=Ssj-NhrKOdg&ab_channel=Official%E9%AB%AD%E7%94%B7dism" target="_blank" rel="noopener noreferrer">Sharon</a>でタイピング！</h1>
 	<h1>
 		{#each question.jp.split('') as q}
 			<span>{q}</span>
