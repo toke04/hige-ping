@@ -25,7 +25,8 @@
 		'https://ogre.natalie.mu/media/news/music/2023/0809/higedan_art202308.jpg?impolicy=thumb_fit&width=220&height=220',
 		'https://ogre.natalie.mu/media/news/music/2023/0309/GD_higedan_JK_mixnuts.jpg?impolicy=thumb_fit&width=220&height=220',
 		'https://ogre.natalie.mu/media/news/music/2022/0829/higedan_jkt202210cd.jpg?impolicy=thumb_fit&width=220&height=220',
-	  'https://ogre.natalie.mu/media/news/music/2020/0409/officialhigedandism_art202004.jpg?impolicy=thumb_fit&width=220&height=220'
+	  'https://ogre.natalie.mu/media/news/music/2020/0409/officialhigedandism_art202004.jpg?impolicy=thumb_fit&width=220&height=220',
+		'https://ogre.natalie.mu/media/news/music/2021/0129/officialhigedandism_jkt202102_dvd.jpg?impolicy=thumb_fit&width=220&height=220'
 	]
 
 	const changeQuestion = () => {
