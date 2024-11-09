@@ -2,6 +2,7 @@
 	let count = 0;
 	let text = 'hello';
 	let input = '';
+	let markIndex = 0;
 	// const handleKey = (e: React.KeyboardEvent<HTMLDivElement>) => {
 	// 	// 入力したキーと現在入力しようとしている文字が一致するとき
 	// 	if (e.key === text[position]) {
@@ -10,7 +11,9 @@
 	// 	}
 	// };
 	const handleKeydown = (e) => {
-		input = e.key;
+		if (e.key === text[markIndex]) {
+			markIndex++;
+		}
 	};
 </script>
 <svelte:window on:keydown={handleKeydown} />
@@ -22,6 +25,7 @@
 <div>
 	<h1>{ text }</h1>
 	<h1>{ input }</h1>
+	<h1>{ text[markIndex] }</h1>
 <!--	<p><button on:keydown={handleKey}>ボタンを押して</button></p>-->
 
 <!--	<p>-->
