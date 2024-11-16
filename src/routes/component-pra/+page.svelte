@@ -12,10 +12,11 @@
 	let catImage = ''
 
 	onMount(async () => {
-		const res = await fetch('https://api.thecatapi.com/v1/images/search')
-		const json = await res.json();
-		catImage = json[0].url
+		const res = await fetch('https://api.thecatapi.com/v1/images/search');
+		console.log(res.json()) // こういう書き方をするとpromiseが解決しないうちに返却することになるのでpendingになる
+		const json = await res.json(); // thenとcatchを兼ねるので、resolveもrejectも受け取れる
 		console.log(json[0].url)
+		catImage = json[0].url
 	})
 
 </script>
