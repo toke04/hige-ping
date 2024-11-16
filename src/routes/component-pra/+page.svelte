@@ -2,12 +2,23 @@
 	import Child from '../../component/component-pra/child1/+page.svelte';
 	import Books from '../../component/component-pra/books/+page.svelte';
 	import Users from '../../component/component-pra/users/+page.svelte'
+	import { onMount } from 'svelte';
 	let props = '渡す'
 	let users = [
 		{name: "taro", age: 18},
 		{name: "hanako", age: 49},
 		{name: "tomo", age: 37},
 	]
+	let catImage = ''
+
+	onMount(() => {
+		fetch("https://api.thecatapi.com/v1/images/search")
+			.then(response => {
+				catImage = response[0].url;
+				console.log(response)
+			})
+	})
+
 </script>
 
 <div>
@@ -21,5 +32,10 @@
 			<Users users={users}/>
 		</div>
 	</div>
+	{#if catImage}
+		<p>
+				<img src={catImage} alt="猫画像">
+		</p>
+	{/if}
 
 </div>
