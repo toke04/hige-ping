@@ -1,5 +1,9 @@
-<script>
-	export let users = {};
+<script lang="ts">
+	type User = {
+		name: string;
+		age: number;
+	}
+	export let users: User[];
 </script>
 
 <ul>
