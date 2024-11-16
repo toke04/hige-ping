@@ -9,14 +9,14 @@
 		{name: "hanako", age: 49},
 		{name: "tomo", age: 37},
 	]
-	let catImage = ''
+	let catImageUrl = ''
 
 	onMount(async () => {
 		const res = await fetch('https://api.thecatapi.com/v1/images/search');
-		console.log(res.json()) // こういう書き方をするとpromiseが解決しないうちに返却することになるのでpendingになる
+		// console.log(res.json()) // こういう書き方をするとpromiseが解決しないうちに返却することになるのでpendingになる
 		const json = await res.json(); // thenとcatchを兼ねるので、resolveもrejectも受け取れる
 		console.log(json[0].url)
-		catImage = json[0].url
+		catImageUrl = json[0].url
 	})
 
 </script>
@@ -32,9 +32,9 @@
 			<Users users={users}/>
 		</div>
 	</div>
-	{#if catImage}
+	{#if catImageUrl}
 		<p>
-				<img src={catImage} alt="猫画像">
+				<img src={catImageUrl} alt="猫画像">
 		</p>
 	{/if}
 
