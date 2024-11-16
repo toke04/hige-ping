@@ -11,12 +11,11 @@
 	]
 	let catImage = ''
 
-	onMount(() => {
-		fetch("https://api.thecatapi.com/v1/images/search")
-			.then(response => {
-				catImage = response[0].url;
-				console.log(response)
-			})
+	onMount(async () => {
+		const res = await fetch('https://api.thecatapi.com/v1/images/search')
+		const json = await res.json();
+		catImage = json[0].url
+		console.log(json[0].url)
 	})
 
 </script>
