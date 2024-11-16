@@ -1,5 +1,6 @@
 <script>
 	import Child from '../../component/component-pra/child1/+page.svelte';
+	import Books from '../../component/component-pra/books/+page.svelte';
 	let props = '渡す'
 </script>
 
@@ -8,4 +9,10 @@
 	<Child name='太郎'/>
 	<Child />
 	<Child name={props}/>
+	<div>
+		<ul>
+			<Books/>
+		</ul>
+	</div>
+
 </div>
