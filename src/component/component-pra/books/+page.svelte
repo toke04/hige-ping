@@ -1,5 +1,4 @@
 <script>
-	import Book from '../book/+page.svelte'
 	let books = [
 		{title: 'hoge1', content: 'ああ'},
 		{title: 'hoge2', content: 'いい'},
@@ -10,6 +9,6 @@
 
 <ul>
 	{#each books as book}
-		<Book book={book}></Book>
+		<li>タイトル: {book.title} 内容: {book.content}</li>
 	{/each}
 </ul>

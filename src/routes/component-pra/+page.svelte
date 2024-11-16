@@ -9,7 +9,7 @@
 	<Child name='太郎'/>
 	<Child />
 	<Child name={props}/>
-	<div>
+	<div class="mt-4">
 		<ul>
 			<Books/>
 		</ul>
